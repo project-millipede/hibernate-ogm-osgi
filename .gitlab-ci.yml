@@ -1,5 +1,8 @@
 image: maven:3.6.3-jdk-13
 
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
 cache:
   paths:
     - ~/.m2/repository
