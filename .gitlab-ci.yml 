@@ -14,3 +14,6 @@ build_branch_feature:
   except:
     refs:
       - master
+    only:
+      variables:
+        - $ENABLE_BUILD
