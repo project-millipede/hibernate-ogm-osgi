@@ -1,0 +1,4 @@
+[submodule "hibernate-ogm"]
+	path = hibernate-ogm
+	url = https://github.com/project-millipede/hibernate-ogm.git
+	branch = master
