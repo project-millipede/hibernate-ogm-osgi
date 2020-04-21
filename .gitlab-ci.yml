@@ -1,8 +1,5 @@
 image: maven:3.6.3-jdk-13
 
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
-
 cache:
   paths:
     - ~/.m2/repository
@@ -12,6 +9,8 @@ stages:
 
 build_branch_feature:
   stage: build
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
   script:
-    - cd /hibernate-ogm
+    - pwd
     - mvn ${MAVEN_CLI_OPTS} clean install -Dskip.integration.tests=false -Dskip.unit.tests=false
