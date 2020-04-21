@@ -11,3 +11,9 @@ build_branch_feature:
   stage: build
   script:
     - mvn clean install -Dskip.integration.tests=false -Dskip.unit.tests=false
+  only:
+    variables:
+      - $CI_SERVER_HOST == "gitlab.com"
+  except:
+    refs:
+      - master
