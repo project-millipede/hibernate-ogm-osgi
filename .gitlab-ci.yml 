@@ -11,9 +11,3 @@ build_branch_feature:
   stage: build
   script:
     - mvn clean install -Dskip.integration.tests=false -Dskip.unit.tests=false
-  except:
-    refs:
-      - master
-    only:
-      variables:
-        - $ENABLE_BUILD
