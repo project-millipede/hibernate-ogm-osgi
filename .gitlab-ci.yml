@@ -1,8 +1,5 @@
 image: maven:3.6.3-jdk-13
 
-before_script:
-  - cd /hibernate-ogm
-
 cache:
   paths:
     - ~/.m2/repository
@@ -13,4 +10,5 @@ stages:
 build_branch_feature:
   stage: build
   script:
-    - mvn clean install -Dskip.integration.tests=false -Dskip.unit.tests=false
+    - cd /hibernate-ogm
+    - mvn ${MAVEN_CLI_OPTS} clean install -Dskip.integration.tests=false -Dskip.unit.tests=false
