@@ -1,0 +1,37 @@
+<settings xmlns="http://maven.apache.org/settings/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <servers>
+        <server>
+            <id>gitlab-maven</id>
+            <configuration>
+                <httpHeaders>
+                    <property>
+                        <name>Job-Token</name>
+                        <value>${env.CI_JOB_TOKEN}</value>
+                    </property>
+                </httpHeaders>
+            </configuration>
+        </server>
+    </servers>
+
+    <profiles>
+        <profile>
+            <id>gitlab-build</id>
+            <properties>
+                <jboss.releases.repo.id>gitlab-maven</jboss.releases.repo.id>
+                <jboss.releases.repo.url>https://gitlab.com/api/v4/projects/${env.CI_PROJECT_ID}/packages/maven
+                </jboss.releases.repo.url>
+                <jboss.snapshots.repo.id>gitlab-maven</jboss.snapshots.repo.id>
+                <jboss.snapshots.repo.url>https://gitlab.com/api/v4/projects/${env.CI_PROJECT_ID}/packages/maven
+                </jboss.snapshots.repo.url>
+            </properties>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>gitlab-build</activeProfile>
+    </activeProfiles>
+
+</settings>
